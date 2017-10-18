@@ -98,7 +98,7 @@ $query = mysql_query(
 </script>
 
 <br>
-Add an event
+Add an event here:
 
 <form action="includes/newEvent.inc.php" method="POST">
   <input type="text" name="event_name" placeholder="Event Name" size="50" >
