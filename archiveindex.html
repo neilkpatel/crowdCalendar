@@ -1,0 +1,129 @@
+<?php
+	include 'includes/dbh.inc.php'; // database connection first
+
+	dbConnect();
+	$query = mysql_query(
+  	"SELECT id, first_name, last_name, film_info, vote 
+  	FROM  voting
+  	LIMIT 0 , 15");
+?>
+
+	
+?>
+
+<!DOCTYPE html> <!-- indication we are starting a HTML 5 document -->
+
+<html lang="en">
+<head>
+	<title></title>
+<meta charset="UTF-8"> <!-- standard charset with basic website -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- bootstrap is on mobile first, we need to make sure view is proportionally correct -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+
+
+	<div class="title">
+		<h2>Crowd Calendar</h2>
+		<p>What is going on in the world around you?</p>
+		<hr>
+	</div>
+
+<div
+Votes | Event Details | Event Description
+
+	<div class="row">
+			<div class="col-xs-4 title-left">Votes</div>
+			<!-- Resize image. Responsive image.  -->
+			<div class="col-xs-4 title-center">Event Details</div>
+			
+			<div class="col-xs-4 title-right">Event Description</div>
+		</div>
+	</div>
+
+<br>
+
+	<div class="row">
+			<div class="col-xs-4 left"><img src="img/thumbsUp.jpg" height="50" width="50"><img src="img/thumbsDown.jpg" height="50" width="50"></div>
+			<!-- Resize image. Responsive image.  -->
+			<div class="col-xs-4 center">Halloween Festival in Central Park<br>12PM on Sunday, October 31, 2017</div>
+			
+			<div class="col-xs-4 right">Halloween festival, open bar, lots of food and fun.</div>
+		</div>
+	</div>
+
+
+	<div class="numberupvotes"></div>
+	<br>
+	<div class="numberdownvotes"></div>
+
+	<hr>
+
+
+
+<script>
+	$(document).ready(function(){
+	  // ajax setup
+	  $.ajaxSetup({
+	    url: 'ajaxvote.php',
+	    type: 'POST',
+	    cache: 'false'
+	  });
+
+	  // any voting button (up/down) clicked event
+	  $('.vote').click(function(){
+	    var self = $(this); // cache $this
+	    var action = self.data('action'); // grab action data up/down 
+	    var parent = self.parent().parent(); // grab grand parent .item
+	    var postid = parent.data('postid'); // grab post id from data-postid
+	    var score = parent.data('score'); // grab score form data-score
+
+	    // only works where is no disabled class
+	    if (!parent.hasClass('.disabled')) {
+	      // vote up action
+	      if (action == 'up') {
+	        // increase vote score and color to orange
+	        parent.find('.vote-score').html(++score).css({'color':'orange'});
+	        // change vote up button color to orange
+	        self.css({'color':'orange'});
+	        // send ajax request with post id & action
+	        $.ajax({data: {'postid' : postid, 'action' : 'up'}});
+	      }
+	      // voting down action
+	      else if (action == 'down'){
+	        // decrease vote score and color to red
+	        parent.find('.vote-score').html(--score).css({'color':'red'});
+	        // change vote up button color to red
+	        self.css({'color':'red'});
+	        // send ajax request
+	        $.ajax({data: {'postid' : postid, 'action' : 'down'}});
+	      };
+
+	      // add disabled class with .item
+	      parent.addClass('.disabled');
+	    };
+	  });
+	});
+</script>
+
+
+
+
+</body>
+</html>
+
+
