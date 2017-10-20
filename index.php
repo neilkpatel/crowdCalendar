@@ -1,30 +1,16 @@
 <?php
-include 'includes/dbh.inc.php';
-# connect mysql db
-dbConnect();
-$query = mysql_query(
-  'SELECT id, event_name, event_datetime, event_description, vote 
-  FROM  voting
-  LIMIT 0 , 99'); // limit of 15 items. extend eventually
-?>
-<!DOCTYPE html>
+  include_once 'header.php'
+  ?>
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>jQUery Voting System</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <section class="main-container"> 
+    <div class="main-wrapper">
+      <h2>Home</h2>
 
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+    </div>
+  </section>
 
+  <hr>
 
-  <script src="https://use.fontawesome.com/df1d01cb31.js"></script>  
-  </head>
-
-<body>
   <div class="wrap">
     <?php while($row = mysql_fetch_array($query)): ?> 
     <div class="item" data-postid="<?php echo $row['id'] ?>" data-score="<?php echo $row['vote'] ?>">
@@ -102,6 +88,8 @@ Add an event here!
 
 <form action="includes/newEvent.inc.php" method="POST">
   <input type="text" name="event_name" placeholder="Event Name" size="50" >
+  <br>j
+  <input type="text" name="event_location" placeholder="Event Location" size="50" >
   <br>
   <input type="datetime-local" name="event_datetime">
   <br>
@@ -110,7 +98,6 @@ Add an event here!
   <button type="submit" name="submit">Submit Info</button>
 </form>
 
-
-
-</body>
-</html>
+<?php
+include_once 'footer.php';
+?>
