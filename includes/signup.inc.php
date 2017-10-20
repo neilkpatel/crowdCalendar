@@ -27,6 +27,21 @@ if (isset($_POST['submit']) { // check if something is existing inside file. che
 				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				header("Location: ../signup.php?signup=invalidemail");
 				exit();	
+				} else { // check if UID is already taken inside database. create connection to database and query database
+					$sql = "SELECT * FROM users WHERE user_uid='$uid'";
+					$result = mysqli_query($conn, $sql); // connect + run statement inside database. check if we have any results / matches
+					$resultCheck = mysqli_num_rows($result); // query and check if we have any kind of rows as results.
+
+					if ($resultCheck > 0) { // if we have a user return
+					header("Location: ../signup.php?signup=usertaken");
+					exit();		
+					} else { // now let's hash the password because if we put password into database, we can read it in database. keep it secure. 
+						// hashing the password
+						$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT); // function for hashing method
+						// Insert user into database. renaming variables
+						$sql = "INSERT INTO users (user_first, user_last, user_email, user_uid, user_pwd) VALUES ('$first', '$last', '$email', '$uid', '$hashedPwd');";
+						mysqli_query($conn, $sql); // this inserts the data into the database. runs function.
+					}
 				}
 			}
 	}
