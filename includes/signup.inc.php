@@ -2,7 +2,7 @@
 
 <?php
 // extra security messure. make sure people have to click button to run this code
-if (isset($_POST['submit']) { // check if something is existing inside file. check for submit. take data from previous form and value passed in. check for button named submit
+if (isset($_POST['submit'])) { // check if something is existing inside file. check for submit. take data from previous form and value passed in. check for button named submit
 	include_once 'dbh.inc.php'; 
 
 	// Get data from form
@@ -20,7 +20,7 @@ if (isset($_POST['submit']) { // check if something is existing inside file. che
 		header("Location: ../signup.php?signup=empty"); // signup=empty will be in URL when we go back. depending on error message, we can include styling inside signup form
 		exit(); 
 	} else { // check if input characters are something we want to allow in the database
-			if (!preg_match("/^[a-zA-Z]*$", $first) | !preg_match("/^[a-zA-Z]*$", $last) ) { // php function that checks if we have certain characters inside a string, string to check. error check first. if characters not these characters existing.
+			if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) ) { // php function that checks if we have certain characters inside a string, string to check. error check first. if characters not these characters existing.
 				header("Location: ../signup.php?signup=invalid");
 				exit();
 			} else { // if characters are valid...now check e-mail
@@ -41,6 +41,8 @@ if (isset($_POST['submit']) { // check if something is existing inside file. che
 						// Insert user into database. renaming variables
 						$sql = "INSERT INTO users (user_first, user_last, user_email, user_uid, user_pwd) VALUES ('$first', '$last', '$email', '$uid', '$hashedPwd');";
 						mysqli_query($conn, $sql); // this inserts the data into the database. runs function.
+						header("Location: ../signup.php?signup=success");
+						exit();
 					}
 				}
 			}

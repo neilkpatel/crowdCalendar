@@ -8,7 +8,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH']) { // this checks whether a request is AJA
   if (isset($_POST['postid']) AND isset($_POST['action'])) {
     $postId = (int) mysql_real_escape_string($_POST['postid']);
     # check if already voted, if found voted then return
-    if (isset($_SESSION['vote'][$postId])) return; // ????
+    if (isset($_SESSION['vote'][$postId])) return; // see bottom
     # connect mysql db
     
 
@@ -19,7 +19,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH']) { // this checks whether a request is AJA
       WHERE id = '{$postId}' 
       LIMIT 1" );
 
-    # increase or dicrease voting score
+    # increase or decrease voting score
     if ($data = mysql_fetch_array($query)) {
       if ($_POST['action'] === 'up'){
         $vote = ++$data['vote'];

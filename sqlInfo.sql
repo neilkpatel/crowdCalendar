@@ -25,3 +25,12 @@ CREATE TABLE users (
    	user_pwd varchar(256) not null
     
 );
+
+
+
+INSERT INTO voting (event_name, event_datetime, event_description, address)
+
+VALUES ('Scary Bazaar', '2017-10-29 10:00:00', 'Costumed vendors dole out delicious Halloween treats and crafts at this spooky edition of the Grand Bazaar.','Grand Bazaar NYC, 100 West 77th Street'
+
+);
+

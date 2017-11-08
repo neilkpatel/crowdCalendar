@@ -6,6 +6,9 @@ Author: Richard Clark - http://richclarkdesign.com
 Twitter: @rich_clark
 */
 
+@charset "UTF-8";
+
+
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -88,42 +91,55 @@ table {
 }
 
 /* change border colour to suit your needs */
-hr {
+/*hr {
     display:block;
     height:1px;
     border:0;   
     border-top:1px solid #cccccc;
-    margin:1em 0;
+    margin:0 0;
     padding:0;
-}
+}*/
 
 input, select {
     vertical-align:middle;
 }
 
+hr {
+  padding: 0px;
+  margin: 0px;
+}
 
-
-
-
-
-
-
+.sortdate a {
+  text-decoration: underline;
+  padding-right: 10px
+}
 
 /* voting style */
 .vote-span {
   width: 60px;
   float: left;
   display: inline;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
+.item {
+
+}
 .post {
   padding-left: 10px;
   display: inline;
+  margin-top: 0px;
+  padding-top: 0px;
 
 
 }
+.post h2 {
+  padding-left: 70px;
+}
 
+.post p {
+  padding-left: 70px;
+}
 
 .vote, .vote-score{
   clear: both;
@@ -141,6 +157,13 @@ input, select {
   margin: 0 auto;
   width: 100%;
 }
+
+.main-wrapper ul li {
+  padding-right: 10px;
+  text-decoration: underline;
+}
+
+
 
 header nav {
   width 100%;
@@ -176,13 +199,18 @@ header .nav-login input {
   padding: 0px 10px;
   margin-right: 10px;
   border: none;
-  background-color: #FFA500;
+  background-color: #1c4f45;
+  color: white;
   line-height: 30px;
 }
 
 header .nav-login button:hover  {
   background-color: #42f483;
 }
+
+/*::-webkit-input-placeholder {  WebKit, Blink, Edge 
+    color:    white;
+}*/
 
 header .nav-login button {
   float: left;
@@ -193,7 +221,9 @@ header .nav-login button {
   border: none;
   line-height: 30px;
   cursor: pointer;
-  background-color: #FFA500;
+  background-color: #1c4f45; 
+  color: white;
+
 }
 
 header .nav-login a {
@@ -208,16 +238,16 @@ header .nav-login a {
   margin-right: 10px;
   font-size: 12px;
   text-align: center;
-  color: black;
-  background-color: #FFA500;
+  color: white;
+  background-color: #1c4f45;
 }
 
 .main-container {
-  padding-top: 40px;
+  padding-top: 0px;
 }
 
 .main-container h2 {
-  padding-top: 40px;
+  padding-top: 10px;
   line-height: 50px;
   font-size: 40px;
   text-align: center;
