@@ -11,4 +11,3 @@
   ?>
 
 
-IF CAST(DateField1 AS DATE) = CAST(DateField2 AS DATE)
