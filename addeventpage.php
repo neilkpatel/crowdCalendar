@@ -31,6 +31,6 @@
 
 <br>
 
-<a href = "index.php" style="color: blue">crowdCalendar NYC</a>
+<a href = "index.php" style="color: blue">sup in your city - NYC</a>
 
 

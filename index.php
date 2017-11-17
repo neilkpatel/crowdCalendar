@@ -5,7 +5,7 @@
 
   if($count==0) {
     echo "<br>";
-    echo "Sup? Apparently nothing!";
+    echo "Apparently nothing interesting is happening. Add an event to change that!";
   }
 
   ?>
