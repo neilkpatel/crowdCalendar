@@ -59,7 +59,9 @@ a {
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
+    color: blue;
 }
+
 
 /* change colours to suit your needs */
 ins {
@@ -110,8 +112,9 @@ hr {
 }
 
 .sortdate a {
-  text-decoration: underline;
-  padding-right: 10px
+  
+ margin-right: 10px;
+
 }
 
 /* voting style */
@@ -161,6 +164,10 @@ hr {
 .main-wrapper ul li {
   padding-right: 10px;
   text-decoration: underline;
+}
+
+header {
+  display: none; /***** Hiding Top Bar ******/
 }
 
 
@@ -280,4 +287,33 @@ header .nav-login a {
 
 .signup-form button:hover {
 }
+
+.active {
+  font-weight: bold;
+  font-size: 20px;
+  border-style: solid;
+  border-width: 2px;
+  text-align: center;
+  color: green;
+
+}
+
+.headerimage {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.headerimage img {
+  height: 50%;
+  width: 50%;
+}
+
+.sortdate img {
+  height: 10%;
+  width: 10%;
+
+}
+
+
+
 

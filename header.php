@@ -5,19 +5,29 @@ session_start();
 include 'includes/dbh.inc.php';
 # connect mysql db
 dbConnect();
-$query = mysql_query(
-  'SELECT id, event_name, event_datetime, event_description, vote, address 
+// By votes
+// $query = mysqli_query($conn, 
+//   'SELECT id, event_name, event_datetime, event_description, vote, address, url 
+//   FROM  voting
+//   WHERE event_datetime >= CURDATE() 
+//   ORDER BY vote DESC
+//   LIMIT 0 , 99'); // limit of 15 items. extend eventually
+
+  $query = mysqli_query($conn, 'SELECT id, event_name, event_datetime, event_description, vote, address, url 
   FROM  voting
-  #WHERE event_datetime = CURDATE() 
+  WHERE CAST(event_datetime as DATE) = CAST(CURDATE() AS DATE) 
   ORDER BY vote DESC
-  LIMIT 0 , 99'); // limit of 15 items. extend eventually
+  LIMIT 0 , 99'); 
+
+
+
 ?>
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>jQUery Voting System</title>
+  <meta charset="UTF-8"/>
+  <title>sup in your city - NYC</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 
   <script
@@ -65,31 +75,39 @@ $query = mysql_query(
         </div>
     </nav>
   </header>
-
    <section class="main-container"> 
     <div class="main-wrapper"> 
-      <h2>crowdCalendar</h2>
+      <div class="headerimage"><img src="img/supinyourcitytext.png"/></div>
         <center class="sortdate">
-        <!-- <a href="index.php">Today</a>
-        <a href="index.php">Tomorrow</a>
-        <a href="index.php">Weekend</a> -->
-        <a class="today" href="index.php">Total Votes</a>
-        <a class="today" href="today.php">Today</a>
+        <a class="today" href="index.php">Today</a>
         <a class="tomorrow" href="tomorrow.php">Tomorrow</a>
         <a class="weekend" href="weekend.php">Weekend</a>
+        <a class="mostvotes" href="mostvotes.php">Most Votes</a>
         </center>
-        <br> <br>
+        
         
       <?php
-      if (isset($_SESSION['u_id'])) {
-        echo "You are logged in!";
-      } else {
-        echo "You are not logged in!";
-      }
+      // if (isset($_SESSION['u_id'])) {
+      //   echo "You are logged in!";
+      // } else {
+      //   echo "You are not logged in!";
+      // }
       ?>
 
 
     </div>
   </section>
+<a class="addevent" href="addeventloginpage.php">&nbsp; Add Event</a>
+<hr>
 
+<script>
+  $(function(){
+    $('.sortdate a').each(function(){
+        if($(this).prop('href') == window.location.href) {
+          $(this).addClass('active'); 
+        }
+    });
+  });
+
+</script>
 

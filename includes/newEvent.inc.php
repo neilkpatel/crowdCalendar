@@ -1,15 +1,19 @@
 <?php
 	include 'dbh.inc.php';
 
-	$event_name = $_POST['event_name']; // $_POST variable is a superglobal, takes data we passed into form
-	$event_datetime = $_POST['event_datetime'];
-	$event_description = $_POST['event_description'];
+	mysqli_real_escape_string($conn, $_POST['event_name']); 
 
-	$sql = "INSERT INTO voting (event_name, event_datetime, event_description)
-		   Values ('$event_name', '$event_datetime', '$event_description');";
+	$event_name = mysqli_real_escape_string($conn, $_POST['event_name']);  // $_POST variable is a superglobal, takes data we passed into form
+	$address = mysqli_real_escape_string($conn, $_POST['address']); 
+	$event_datetime = mysqli_real_escape_string($conn, $_POST['event_datetime']); 
+	$event_description = mysqli_real_escape_string($conn, $_POST['event_description']); 
+	$url = mysqli_real_escape_string($conn, $_POST['url']); 
+
+	$sql = "INSERT INTO voting (event_name, event_datetime, event_description, address, url)
+		   Values ('$event_name', '$event_datetime', '$event_description', '$address', '$url');";
 
 
 
 	mysqli_query($conn, $sql);
 
-	header("Location: ../index.php?neweventsubmit=success"); // takes us to front page
+	header("Location: ../addeventpage.php?neweventsubmit=success"); // takes us back to the submit page

@@ -1,20 +1,17 @@
 <?php
   include_once 'header.php';
 
-  // $query = mysql_query(
-  // 'SELECT id, event_name, event_datetime, event_description, vote, address 
-  // FROM  voting
-  // ORDER BY vote DESC
-  // LIMIT 0 , 99'); // limit of 15 items. extend eventually
+   $count=mysqli_num_rows($query);
+
+  if($count==0) {
+    echo "<br>";
+    echo "Sup? Apparently nothing!";
+  }
 
   ?>
 
-
-
-  <hr>
-
   <div class="wrap">
-    <?php while($row = mysql_fetch_array($query)): ?> 
+    <?php while($row = mysqli_fetch_array($query)): ?> 
     <div class="item" data-postid="<?php echo $row['id'] ?>" data-score="<?php echo $row['vote'] ?>">
       <div class="vote-span"><!-- voting-->
         <div class="vote" data-action="up" title="Vote up">
@@ -29,7 +26,8 @@
       <div class="post"><!-- post data -->
         <h2><?php echo $row['event_name'].' on '?><u><?php echo date("l m/d/y g:i A", strtotime($row['event_datetime']))?></u></h2>
         <p><br><?php echo $row['event_description'] ?></p>
-        <p><br><b>Address: </b><?php echo $row['address'] ?></p>
+        <p><br><b>Location: </b><?php echo $row['address'] ?></p>
+        <p><br><b>URL: </b><a href="<?php echo $row['url'] ?>"><?php echo $row['url'] ?></a></p>
       </div>
     </div><!--item-->
     <hr>
@@ -91,20 +89,6 @@
 
 </script>
 
-<br>
-Add an event here!
-
-<form action="includes/newEvent.inc.php" method="POST">
-  <input type="text" name="event_name" placeholder="Event Name" size="50" >
-  <br>
-  <input type="text" name="event_location" placeholder="Event Location" size="50" >
-  <br>
-  <input type="datetime-local" name="event_datetime">
-  <br>
-  <textarea rows="5" cols="50" type="text" name="event_description" placeholder="Event Description"> </textarea>
-  <br>
-  <button type="submit" name="submit">Submit Info</button>
-</form>
 
 <?php
 include_once 'footer.php';

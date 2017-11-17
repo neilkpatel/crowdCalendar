@@ -1,13 +1,21 @@
+
 <?php
   include_once 'header.php';
 
-  $query = mysql_query( 'SELECT id, event_name, event_datetime, event_description, vote, address 
+  $query = mysqli_query($conn, 'SELECT id, event_name, event_datetime, event_description, vote, address, url 
   FROM  voting
   WHERE CAST(event_datetime as DATE) = CAST(CURDATE() AS DATE) 
-  ORDER BY event_name ASC
-  LIMIT 0 , 99'); // limit of 15 items. extend eventually
+  ORDER BY vote DESC
+  LIMIT 0 , 99'); 
 
-  include_once 'index.php';
-  ?>
+   
+   
+   $count=mysqli_num_rows($query);
+
+  if($count==0) {
+    echo "<br>";
+    echo "Apparently nothing interesting is happening!";
+  }
+
 
 
