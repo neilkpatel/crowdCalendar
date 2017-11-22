@@ -1,3 +1,4 @@
+
 <?php
 // saving class files inside includes folder for better organization
 // create class that has the database connection to the database. call when you need to create a connection

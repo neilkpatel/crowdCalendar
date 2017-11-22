@@ -12,12 +12,19 @@ dbConnect();
 //   WHERE event_datetime >= CURDATE() 
 //   ORDER BY vote DESC
 //   LIMIT 0 , 99'); // limit of 15 items. extend eventually
+  // Today:
+  // $query = mysqli_query($conn, 'SELECT id, event_name, event_datetime, event_description, vote, address, url
+  // FROM  voting
+  // WHERE CAST(event_datetime as DATE) = CAST(CURDATE() AS DATE) AND isapproved = 1
+  // ORDER BY vote DESC
+  // LIMIT 0 , 99'); 
 
-  $query = mysqli_query($conn, 'SELECT id, event_name, event_datetime, event_description, vote, address, url 
-  FROM  voting
-  WHERE CAST(event_datetime as DATE) = CAST(CURDATE() AS DATE) AND isapproved = 1
-  ORDER BY vote DESC
-  LIMIT 0 , 99'); 
+    $query = mysqli_query($conn, 
+    'SELECT id, event_name, event_datetime, event_description, vote, address, url 
+    FROM  voting
+    WHERE event_datetime >= CURDATE() AND isapproved = 1
+    ORDER BY vote DESC
+    LIMIT 0 , 99'); // limit of 15 items. extend eventually
 
 
 
@@ -26,6 +33,7 @@ dbConnect();
 
 <html lang="en">
 <head>
+  <link rel="icon" href="img/favicon.png"> 
   <meta charset="UTF-8"/>
   <title>sup in your city - NYC</title>
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -77,12 +85,26 @@ dbConnect();
   </header>
    <section class="main-container"> 
     <div class="main-wrapper"> 
-      <div class="headerimage"><img src="img/supinyourcitytext.png"/></div>
+      <div class="headerimage"><a href="index.php"><img src="img/supinyourcitytext.png"/></a>
+      </div>
         <center class="sortdate">
-        <a class="today" href="index.php">Today</a>
+          <br>
+
+        <a class="addeventtest" href="addeventpage.php">&nbsp;Add Event</a>
+
+        <div class="dropdown"><button class="dropbtn">NYC&nbsp; &darr;</button>
+            <div class="dropdown-content">
+              <a href="chicago.php">Chicago</a>
+              <a href="miami.php">Miami</a>
+              <a href="seattle.php">Seattle</a>
+            </div>
+        </div>
+
+        <a class="mostvotes" href="index.php">All</a>
+        <a class="today" href="today.php">Today</a>
         <a class="tomorrow" href="tomorrow.php">Tomorrow</a>
         <a class="weekend" href="weekend.php">Weekend</a>
-        <a class="mostvotes" href="mostvotes.php">Most Votes</a>
+        <a class="ongoing" href="ongoing.php">Ongoing</a>
         </center>
         
         
@@ -93,21 +115,21 @@ dbConnect();
       //   echo "You are not logged in!";
       // }
       ?>
-
-
     </div>
   </section>
-<a class="addevent" href="addeventloginpage.php">&nbsp; Add Event</a>
-<hr>
+  <br>
+  
+  <hr>
 
 <script>
   $(function(){
     $('.sortdate a').each(function(){
         if($(this).prop('href') == window.location.href) {
           $(this).addClass('active'); 
+        } else if (window.location.href == 'http://www.supinyourcity.com/') {
+          $('.sortdate .mostvotes').addClass('active');
         }
     });
   });
-
 </script>
 

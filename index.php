@@ -5,7 +5,7 @@
 
   if($count==0) {
     echo "<br>";
-    echo "Apparently nothing interesting is happening. Add an event to change that!";
+    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apparently nothing interesting is happening. Add an event to change that!";
   }
 
   ?>
@@ -27,7 +27,7 @@
         <h2><?php echo $row['event_name'].' on '?><u><?php echo date("l m/d/y g:i A", strtotime($row['event_datetime']))?></u></h2>
         <p><br><?php echo $row['event_description'] ?></p>
         <p><br><b>Location: </b><?php echo $row['address'] ?></p>
-        <p><br><b>URL: </b><a href="<?php echo $row['url'] ?>"><?php echo $row['url'] ?></a></p>
+        <p><br><a href="<?php echo $row['url'] ?>"><?php echo $row['url'] ?></a></p>
       </div>
     </div><!--item-->
     <hr>

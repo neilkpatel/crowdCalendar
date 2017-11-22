@@ -107,8 +107,18 @@ input, select {
 }
 
 hr {
-  padding: 0px;
-  margin: 0px;
+/*  padding: 0px;
+  margin: 0px;*/
+
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+
+}
+
+*{
+  font-family: Garamond;
+
 }
 
 .sortdate a {
@@ -194,9 +204,7 @@ header .nav-login {
   float: right;
 }
 
-a {
-  text-decoration: none;
-}
+
 
 header .nav-login input {
   float: left;
@@ -292,20 +300,24 @@ header .nav-login a {
   font-weight: bold;
   font-size: 20px;
   border-style: solid;
-  border-width: 2px;
+  border-width: 1px;
   text-align: center;
   color: green;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-decoration: none;
 
 }
 
 .headerimage {
   text-align: center;
   padding-top: 10px;
+  display: inline-block;
 }
 
 .headerimage img {
-  height: 50%;
-  width: 50%;
+  height: 25%;
+  width: 25%;
 }
 
 .sortdate img {
@@ -314,6 +326,67 @@ header .nav-login a {
 
 }
 
+.addeventform {
 
+  margin-left: 10px;
+}
 
+.footertext {
+  font-style: italic;
+  text-indent: 1em;
+}
 
+.addeventtest, .mostvotes, .today, .tomorrow, .weekend, .ongoing {
+  margin-left: 10px;
+  border: solid 1px;
+  text-decoration: none;
+  border-radius: 20px;
+  padding: 0px 10px;
+ 
+  
+  box-shadow: 5px 5px 5px #888888;
+
+}
+
+.headerimage div {
+  
+/*  vertical-align: 170%;
+*/}
+
+.dropbtn {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+}
+
+.dropdown {
+
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  float: left;
+
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: inline-block;
+}
+
+.addeventtest {
+  float: left;
+}
