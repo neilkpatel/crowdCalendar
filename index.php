@@ -23,10 +23,21 @@
         </div><!--vote down-->
       </div>
 
+      <div class="calendaricon">
+          <?php echo date("l", strtotime($row['event_datetime']))?>
+          <br>
+          <b><font size="3"><?php echo date("M j", strtotime($row['event_datetime']))?></b></font>
+          <br>
+          <?php echo date("g:iA", strtotime($row['event_datetime']))?>
+
+      </div>
+      
+
       <div class="post"><!-- post data -->
         <h2><?php echo $row['event_name'].' on '?><u><?php echo date("l m/d/y g:i A", strtotime($row['event_datetime']))?></u></h2>
         <p><br><?php echo $row['event_description'] ?></p>
-        <p><br><b>Location: </b><?php echo $row['address'] ?></p>
+        <!-- <p><br><b>Location: </b><?php echo $row['address'] ?></p> -->
+        <p><br><b>Location: </b><a href="<?php echo "https://www.google.com/maps/place/" . $row['address'] . " NYC" ?>"><?php echo $row['address'] ?></a></p>
         <p><br><a href="<?php echo $row['url'] ?>"><?php echo $row['url'] ?></a></p>
       </div>
     </div><!--item-->

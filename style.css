@@ -110,7 +110,7 @@ hr {
 /*  padding: 0px;
   margin: 0px;*/
 
-  height: 10px;
+  height: 5px;
   border: 0;
   box-shadow: 0 10px 10px -10px #8c8b8b inset;
 
@@ -137,6 +137,7 @@ hr {
 
 .item {
 
+
 }
 .post {
   padding-left: 10px;
@@ -144,8 +145,24 @@ hr {
   margin-top: 0px;
   padding-top: 0px;
 
-
 }
+
+.calendaricon {
+  width: 60px;
+  float: left;
+  display: inline;
+  /*margin: 10px 0;*/
+  padding: 20px;
+  margin: 10px 10px 10px 10px;
+  border: 1px solid;
+  text-align: center;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  line-height: 120%;
+  font-size: 16px;
+}
+
+
 .post h2 {
   padding-left: 70px;
 }
@@ -366,10 +383,14 @@ header .nav-login a {
 .dropdown-content {
   display: none;
   background-color: #f9f9f9;
-  min-width: 160px;
+  /*min-width: 160px;*/
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   float: left;
+  /*top: -150px;*/
+  left: 165px;
+  position: absolute;
+  font-size: 10px;
 
 }
 
@@ -378,13 +399,14 @@ header .nav-login a {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  /*display: inline-block;*/
 
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1}
 
 .dropdown:hover .dropdown-content {
-    display: inline-block;
+    display: block;
 }
 
 .addeventtest {
