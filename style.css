@@ -59,7 +59,7 @@ a {
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
-    color: blue;
+    color: #1D72B2;
 }
 
 
@@ -107,8 +107,8 @@ input, select {
 }
 
 hr {
-/*  padding: 0px;
-  margin: 0px;*/
+  /*padding: 1px;*/
+  /*margin: 0px 0px 0px 0px;*/
 
   height: 5px;
   border: 0;
@@ -121,9 +121,10 @@ hr {
 
 }
 
-.sortdate a {
-  
- margin-right: 10px;
+
+.item {
+/*padding-bottom: 10px;*/
+padding-right: 10px;
 
 }
 
@@ -132,43 +133,36 @@ hr {
   width: 60px;
   float: left;
   display: inline;
-  margin: 10px 0;
+  margin: 10px 0px;
 }
 
-.item {
 
 
-}
-.post {
-  padding-left: 10px;
-  display: inline;
-  margin-top: 0px;
-  padding-top: 0px;
-
-}
 
 .calendaricon {
   width: 60px;
   float: left;
   display: inline;
   /*margin: 10px 0;*/
-  padding: 20px;
+  padding: 15px;
   margin: 10px 10px 10px 10px;
-  border: 1px solid;
+  border: 3px solid;
+  border-color: #1D72B2;
   text-align: center;
-  background-color: #f1f1f1;
   border-radius: 10px;
   line-height: 120%;
   font-size: 16px;
+  position: relative;
+
 }
 
 
-.post h2 {
-  padding-left: 70px;
-}
-
-.post p {
-  padding-left: 70px;
+.post {
+  padding-left: 10px;
+  display: inline;
+  margin-top: 0px;
+  padding-top: 0px;
+  
 }
 
 .vote, .vote-score{
@@ -333,36 +327,89 @@ header .nav-login a {
 }
 
 .headerimage img {
-  height: 25%;
-  width: 25%;
+
+  width: 50%;
 }
 
 .sortdate img {
-  height: 10%;
   width: 10%;
 
 }
 
 .addeventform {
 
+/*  border: 2px solid;
+*/  
   margin-left: 10px;
+
+
 }
+
+.submit {
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #E8E8E8;
+}
+  
+  .text, .datetime, .description {
+    border-radius: 10px;
+    font-size: 16px;
+    width: 35%;
+  }
+
+  .datetime {
+    width: 30%;
+    text-align: left;
+  }
+
+  .description {
+    width: 75%;
+
+  }
+
 
 .footertext {
   font-style: italic;
-  text-indent: 1em;
+  /*text-indent: 1em;*/
+  text-align: center;
 }
+
+.nothingtext {
+  text-align: center;
+}
+
+
 
 .addeventtest, .mostvotes, .today, .tomorrow, .weekend, .ongoing {
   margin-left: 10px;
-  border: solid 1px;
+  border: solid 2px;
   text-decoration: none;
   border-radius: 20px;
   padding: 0px 10px;
- 
-  
-  box-shadow: 5px 5px 5px #888888;
+  box-shadow: 2px 2px 2px #888888;
+  color: #1D72B2;
 
+}
+
+
+
+/*@media screen and (max-width: 480px) {
+    .addeventtest, .mostvotes, .today, .tomorrow, .weekend, .ongoing {
+  margin-left: 5px;
+  border: solid 1px;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 0px 10px;
+  box-shadow: 3px 3px 3px #888888;
+  font-size: 6px;
+}
+}*/
+
+
+.addeventtest:hover, .mostvotes:hover, .today:hover, .tomorrow:hover, .weekend:hover, .ongoing:hover {
+  background-color: #e8e8e8;
+  
 }
 
 .headerimage div {
@@ -377,7 +424,7 @@ header .nav-login a {
 }
 
 .dropdown {
-
+  display: none;
 }
 
 .dropdown-content {
@@ -409,6 +456,93 @@ header .nav-login a {
     display: block;
 }
 
-.addeventtest {
+
+
+.mc_embed_signup {
+  margin-left: 10px;
   float: left;
 }
+
+/*Use width % to set width as % of screen. Tablets start at 768px
+Huge part is removing floats. float: none, text-align: center, width 100%;
+*/
+
+
+/* Media Query*/
+
+@media screen and (max-width: 825px) {
+    .addeventtest, .mostvotes, .today, .tomorrow, .weekend, .ongoing {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 0px 0px;
+  box-shadow: none;
+  font-size: 12px;
+  float: none;
+  display: block;
+  width: 240px;
+}
+
+  .mc_embed_signup {
+    float: none;
+    display: inline-block;
+    margin-bottom: 5px;
+    width: 240px;
+  }
+
+ .calendaricon {
+    width: 60px;
+    float: left;
+    display: inline;
+    /*margin: 10px 0;*/
+    padding: 5px;
+    margin: 5px 5px 5px 1px;
+    border: 2px solid;
+    border-color: #1D72B2;
+    text-align: center;
+    border-radius: 10px;
+    line-height: 150%;
+    font-size: 8px;
+    position: relative;
+}
+
+.headerimage img {
+
+  width: 50%;
+}
+
+.vote-span {
+  width: 60px;
+  float: left;
+  display: inline;
+  margin: 5px -10px 5px -10px;
+}
+
+.vote, .vote-score {
+  font-size: 1.0em;
+
+}
+
+.post h2, .post p {
+  
+  margin-left: 45px;
+  margin-top: -10px;
+  font-size: 12px;
+}
+
+
+
+/*.post {
+  padding-left: 10px;
+  display: inline;
+  margin-top: 0px;
+  padding-top: 0px;
+  */
+}
+  
+ 
+}
+

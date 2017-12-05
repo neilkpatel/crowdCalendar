@@ -2,7 +2,7 @@
   include_once 'header.php';
 
 	$query = mysqli_query($conn, 
-	  'SELECT id, event_name, event_datetime, event_description, vote, address, url 
+	  'SELECT id, event_name, event_datetime, event_description, vote, address, url, isongoing
 	  FROM  voting
 	  WHERE event_datetime >= CURDATE() AND isapproved = 1 and isongoing = 1
 	  ORDER BY vote DESC

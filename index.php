@@ -5,10 +5,11 @@
 
   if($count==0) {
     echo "<br>";
-    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apparently nothing interesting is happening. Add an event to change that!";
+    echo "Apparently nothing interesting is happening. Add an event to change that!";
   }
 
   ?>
+</div>
 
   <div class="wrap">
     <?php while($row = mysqli_fetch_array($query)): ?> 
@@ -17,33 +18,33 @@
         <div class="vote" data-action="up" title="Vote up">
           <i class="fa fa-chevron-up"></i>
         </div><!--vote up-->
-        <div class="vote-score"><?php echo $row['vote'] ?></div>
+        <div class="vote-score"><?php echo $row['vote'] ?>
+        </div>
         <div class="vote" data-action="down" title="Vote down">
           <i class="fa fa-chevron-down"></i>
         </div><!--vote down-->
       </div>
 
       <div class="calendaricon">
+          <b><u><?php if ($row['isongoing']==1) echo "Through"."<br/>";?></b></u>
           <?php echo date("l", strtotime($row['event_datetime']))?>
           <br>
           <b><font size="3"><?php echo date("M j", strtotime($row['event_datetime']))?></b></font>
           <br>
           <?php echo date("g:iA", strtotime($row['event_datetime']))?>
-
       </div>
       
 
       <div class="post"><!-- post data -->
-        <h2><?php echo $row['event_name'].' on '?><u><?php echo date("l m/d/y g:i A", strtotime($row['event_datetime']))?></u></h2>
+        <h2><a href="<?php echo $row['url'] ?>" target="_blank"><?php echo $row['event_name']?></a></h2>
         <p><br><?php echo $row['event_description'] ?></p>
-        <!-- <p><br><b>Location: </b><?php echo $row['address'] ?></p> -->
-        <p><br><b>Location: </b><a href="<?php echo "https://www.google.com/maps/place/" . $row['address'] . " NYC" ?>"><?php echo $row['address'] ?></a></p>
-        <p><br><a href="<?php echo $row['url'] ?>"><?php echo $row['url'] ?></a></p>
+        <p><br><b>Location: </b><a href="<?php echo "https://www.google.com/maps/place/" . $row['address'] . " NYC" ?>" target="_blank"><?php echo $row['address'] ?></a></p>
       </div>
-    </div><!--item-->
+      </div><!--item-->
     <hr>
     <?php endwhile?>
-  </div>
+    </div> <!--closes wrap-->
+
   <?php dbConnect(false); ?>
 
 
